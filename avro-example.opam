@@ -17,6 +17,8 @@ depends: [
   "ocaml" {>= "4.08.0"}
   "dune" {>= "2.4"}
   "ctypes" {>= "0.19"}
+  "ctypes-foreign"
+  "conf-libffi" {>= "2.0"}
   "avro" {version}
 ]
 build: [

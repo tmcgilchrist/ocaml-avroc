@@ -13,6 +13,8 @@
   (ocaml (>= 4.08.0))
   (dune (>= 2.4))
   (ctypes (>= 0.19))
+  ctypes-foreign
+  (conf-libffi (>= 2.0))
   (ounit2 (>= 2.2)))
  (synopsis "OCaml bindings to Apache Avro's c library"))
 
@@ -22,5 +24,7 @@
   (ocaml (>= 4.08.0))
   (dune (>= 2.4))
   (ctypes (>= 0.19))
+  ctypes-foreign
+  (conf-libffi (>= 2.0))
   (avro :version))
  (synopsis "Example code for avro library"))
