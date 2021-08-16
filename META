@@ -1,8 +1,0 @@
-version = "0.0.1"
-description = "Read and write avro files using apache avroc"
-requires = "ctypes.foreign"
-archive(byte) = "avroc.cma"
-archive(byte, plugin) = "avroc.cma"
-archive(native) = "avroc.cmxa"
-archive(native, plugin) = "avroc.cmxs"
-exists_if = "avroc.cma"

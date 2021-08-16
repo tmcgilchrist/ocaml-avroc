@@ -1,0 +1,5 @@
+(test
+ (name test_values)
+ (package avro)
+ (libraries avro ounit2)
+ (modules test_values))

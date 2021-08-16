@@ -1,0 +1,5 @@
+(library
+ (name avro)
+ (public_name avro)
+ (libraries ctypes ctypes.foreign)
+ (flags :standard -w -9-27-32-33-34 -cclib -lavro))

@@ -1,0 +1,6 @@
+(executables
+ (libraries avro)
+ (package avro-example)
+ (public_names quickstop)
+ (names quickstop)
+ (flags :standard -w -9-27-32-33-34))
