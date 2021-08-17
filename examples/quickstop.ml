@@ -9,14 +9,10 @@ open Unsigned
 open Simple
 
 let person_schema_str =
-"{\"type\":\"record\",\
-  \"name\":\"Person\",\
-  \"fields\":[\
-     {\"name\": \"ID\", \"type\": \"long\"},\
-     {\"name\": \"First\", \"type\": \"string\"},\
-     {\"name\": \"Last\", \"type\": \"string\"},\
-     {\"name\": \"Phone\", \"type\": \"string\"},\
-     {\"name\": \"Age\", \"type\": \"int\"}]}"
+  "{\"type\":\"record\",\"name\":\"Person\",\"fields\":[{\"name\": \"ID\", \"type\": \
+   \"long\"},{\"name\": \"First\", \"type\": \"string\"},{\"name\": \"Last\", \"type\": \
+   \"string\"},{\"name\": \"Phone\", \"type\": \"string\"},{\"name\": \"Age\", \"type\": \
+   \"int\"}]}"
 
 let quickstop_codec = "null"
 
@@ -25,12 +21,18 @@ let print_person person =
   let long_ptr = allocate_n int64_t ~count:1 in
   let byte_ptr_ptr = allocate_n (ptr char) ~count:1 in
   let size_t_ptr = allocate_n size_t ~count:1 in
-  check_error "Failed to get field" (avro_value_get_by_index person (Size_t.of_int 0) field_ptr (from_voidp string null));
+  check_error
+    "Failed to get field"
+    (avro_value_get_by_index person (Size_t.of_int 0) field_ptr (from_voidp string null));
   check_error "Failed to set string" (avro_value_get_long !@field_ptr long_ptr);
   Format.printf "Id = %d, " (Int64.to_int !@long_ptr);
-  check_error "Failed to get field" (avro_value_get_by_index person (Size_t.of_int 1) field_ptr (from_voidp string null));
-  check_error "Failed to set string" (avro_value_get_string !@field_ptr byte_ptr_ptr size_t_ptr);
-  let first = (string_from_ptr !@byte_ptr_ptr ~length:(Size_t.to_int !@size_t_ptr)) in
+  check_error
+    "Failed to get field"
+    (avro_value_get_by_index person (Size_t.of_int 1) field_ptr (from_voidp string null));
+  check_error
+    "Failed to set string"
+    (avro_value_get_string !@field_ptr byte_ptr_ptr size_t_ptr);
+  let first = string_from_ptr !@byte_ptr_ptr ~length:(Size_t.to_int !@size_t_ptr) in
   Format.printf "First name = %s, " first;
   Format.printf "\n"
 
