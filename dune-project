@@ -15,7 +15,7 @@
   (ctypes (>= 0.19))
   ctypes-foreign
   (conf-libffi (>= 2.0))
-  (ounit2 (>= 2.2 :with-test)))
+  (ounit2 (and (>= 2.2) :with-test)))
  (synopsis "OCaml bindings to Apache Avro's c library"))
 
 (package
