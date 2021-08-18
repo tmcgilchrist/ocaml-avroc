@@ -19,7 +19,7 @@ depends: [
   "ctypes" {>= "0.19"}
   "ctypes-foreign"
   "conf-libffi" {>= "2.0"}
-  "ounit2" {>= "2.2"}
+  "ounit2" {>= "2.2" & with-test}
 ]
 build: [
   ["dune" "subst"] {pinned}

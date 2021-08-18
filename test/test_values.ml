@@ -112,13 +112,17 @@ let test_string _ =
     "Failed to fetch string"
     (avro_value_get_string !@value_ptr byte_ptr_ptr size_t_ptr);
   (* Avro includes the trailing 0 in it's size check so we discount that *)
-  let result_str = string_from_ptr !@byte_ptr_ptr ~length:(Size_t.to_int !@size_t_ptr - 1) in
+  let result_str =
+    string_from_ptr !@byte_ptr_ptr ~length:(Size_t.to_int !@size_t_ptr - 1)
+  in
   assert_equal original result_str;
   check_error "Failed to set string" (avro_value_set_string !@value_ptr updated);
   check_error
     "Failed to fetch string"
     (avro_value_get_string !@value_ptr byte_ptr_ptr size_t_ptr);
-  let result_str = string_from_ptr !@byte_ptr_ptr ~length:(Size_t.to_int !@size_t_ptr - 1) in
+  let result_str =
+    string_from_ptr !@byte_ptr_ptr ~length:(Size_t.to_int !@size_t_ptr - 1)
+  in
   assert_equal updated result_str;
   check_error
     "Failed to set string"
